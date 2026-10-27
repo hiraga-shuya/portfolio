@@ -1,0 +1,33 @@
+{
+    "_fieldDescriptions": {
+        "fileHash": "ファイルのSHA256ハッシュ値 - 自動設定、手動変更不要（環境依存を避けるためタイムスタンプの代わりに使用、必須）",
+        "mtimeMs": "ファイルの最終更新時刻（ミリ秒）- 自動設定、手動変更不要（パフォーマンス最適化用、オプション）",
+        "manual": "手動追加フラグ - true: 手動追加（保護）、false: 自動処理（通常はfalse、手動追加時は必ずtrueに設定）",
+        "compressionLevel": "圧縮レベル - 'low'(高品質90%) | 'medium'(中品質80%) | 'high'(低品質70%) | 'maximum'(最低品質60%) - デフォルト: 'low'",
+        "recompress": "再圧縮フラグ - true: 対象、false: -force以外から除外、未設定: -all/-force時のみ対象"
+    },
+    "wp-content/themes/portfolio/assets/img/common/footer/footer_img_sumple.webp": {
+        "mtimeMs": 1760584868332.6052,
+        "manual": false,
+        "compressionLevel": "low",
+        "fileHash": "3beec0a2fcac61cfcd96bcab8e6f06d2f0dbc0542c4ec1199acfdda294a212fc"
+    },
+    "wp-content/themes/portfolio/assets/img/common/header/header_img_sumple.webp": {
+        "mtimeMs": 1760584868328.6052,
+        "manual": false,
+        "compressionLevel": "low",
+        "fileHash": "f59bd91f474104b2a42dfd17f4ccddd717da5cce13265b4179faafc2e7ea8467"
+    },
+    "wp-content/themes/portfolio/assets/img/img_sample01.webp": {
+        "mtimeMs": 1760584868316.6052,
+        "manual": false,
+        "compressionLevel": "low",
+        "fileHash": "3beec0a2fcac61cfcd96bcab8e6f06d2f0dbc0542c4ec1199acfdda294a212fc"
+    },
+    "wp-content/themes/portfolio/assets/img/sp/img_sample01.webp": {
+        "mtimeMs": 1760584868320.6052,
+        "manual": false,
+        "compressionLevel": "low",
+        "fileHash": "3beec0a2fcac61cfcd96bcab8e6f06d2f0dbc0542c4ec1199acfdda294a212fc"
+    }
+}

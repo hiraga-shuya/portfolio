@@ -1,0 +1,31 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+*{
+    box-sizing: border-box;
+    letter-spacing: var(--letter-spacing);
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: g.$fontface_default;
+    line-height: 1.8;
+    color: var(--white);
+    word-break: break-all;
+    @include g.fontsize(16);
+    background: black;
+    overflow: hidden;
+    &.scrollLock{
+        overflow: hidden;
+    }
+}
+a{
+    color: var(--blue);
+    @include g.media_queries(pc){
+        transition: all 0.3s ease-out;
+    }
+}

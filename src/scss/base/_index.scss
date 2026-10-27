@@ -1,0 +1,13 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+/* base ディレクトリ
+ * 
+ * このディレクトリは、プロジェクトの基本的なスタイル定義を格納します。
+ * - reset: ブラウザのデフォルトスタイルをリセットするスタイル
+ * - base: 全ページに適用される基本的なスタイル（body、htmlタグなど）
+ * - animations: プロジェクト全体で使用されるアニメーション定義
+ */
+@forward "reset";
+@forward "base";
+@forward "animations";

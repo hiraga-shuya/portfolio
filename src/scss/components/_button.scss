@@ -1,0 +1,41 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* ボタン
+========================================================*/
+#{g.$prefix_mod}{
+    &Btn{
+        max-width: 460px;
+        display: block;
+        width: 100%;
+        background: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 16px;
+        margin: 20px auto;
+        transition: .3s;
+        border: 1px solid var(--black);
+        @include g.fontsize(18);
+        font-weight: 700;
+        font-family: g.$fontface_default;
+        @include g.media_queries{
+            @include g.fontsize(16); 
+        }
+        @include g.media_queries(pc){
+            &:hover{
+                color: var(--black);
+                background: var(--white)
+            }
+        }
+        &--white{
+            background: var(--white);
+            color: var(--black);
+            &:hover{
+                background: var(--black);
+                color: var(--white);
+            }
+        }
+    }
+}

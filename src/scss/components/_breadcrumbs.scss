@@ -1,0 +1,52 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* パンクズ
+========================================================*/
+#{g.$prefix_mod}{
+    &Breadcrumbs{
+        display: flex;
+        padding: 0 20px 20px;
+        max-width: 1240px;
+        margin: auto;
+        @media screen and (min-width: 769px) and (max-width: 1100px){
+            padding: 0 40px 20px;
+        }
+        @include g.media_queries{
+            padding: 0 20px 20px;
+            flex-wrap: wrap;
+            gap: 12px 0;
+        }
+        &__item{
+            color: #b6b6b6;
+            @include g.fontsize(12);
+            position: relative;
+            margin: 0 14px 0 0;
+            padding: 0 14px 0 0;
+            &:after{
+                content: "";
+                border-top: 1px solid var(--black);
+                border-right: 1px solid var(--black);
+                transform: rotate(45deg);
+                position: absolute;
+                right: 0px;
+                bottom: 5px;
+                width: 6px;
+                height: 6px;
+            }
+            &:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+            &__link{
+                color: var(--blue);
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

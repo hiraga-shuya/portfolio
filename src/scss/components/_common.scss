@@ -1,0 +1,38 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* テキスト
+========================================================*/
+#{g.$prefix_mod}{
+    &Bp{
+        &Pc{
+            @include g.media_queries(pc){
+                display: inherit;
+            }
+            @include g.media_queries{
+                display: none;
+            }
+        }
+        &Sp{
+            @include g.media_queries(pc){
+                display: none;
+            }
+            @include g.media_queries{
+                display: inherit;
+            }
+        }
+    }
+    &VisuallyHidden{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+}

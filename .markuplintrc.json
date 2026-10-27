@@ -1,0 +1,105 @@
+{
+    "extends": [
+        "markuplint:recommended"
+    ],
+    "excludeFiles": [
+        "**/include/**"
+    ],
+    "parser": {
+        ".php$": "@markuplint/php-parser"
+    },
+    "rules": {
+        "heading-levels": true,
+        "required-h1": true,
+        "permitted-contents": true,
+        "label-has-control": true,
+        "wai-aria": true,
+        "landmark-roles": true,
+        "character-reference": true,
+        "required-attr": true,
+        "no-refer-to-non-existent-id": true,
+        "no-use-event-handler-attr": {
+            "severity": "warning"
+        },
+        "no-empty-palpable-content": true,
+        "invalid-attr": true,
+        "required-element": [
+            "title",
+            "meta[name='description']",
+            "meta[property='og:title']",
+            "meta[property='og:type']",
+            "meta[property='og:url']",
+            "meta[property='og:image']",
+            "link[rel='icon']",
+            "link[rel='canonical']"
+        ]
+    },
+    "nodeRules": [
+        {
+            "selector": "img",
+            "rules": {
+                "required-attr": [
+                    "alt",
+                    "width",
+                    "height",
+                    "loading"
+                ]
+            }
+        },
+        {
+            "selector": "html[prefix]",
+            "rules": {
+                "invalid-attr": {
+                    "severity": "error",
+                    "options": {
+                        "allowAttrs": [
+                            "prefix"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "selector": "script",
+            "rules": {
+                "required-attr": false
+            }
+        },
+        {
+            "selector": "[aria-hidden]",
+            "rules": {
+                "no-empty-palpable-content": false
+            }
+        },
+        {
+            "selector": "main :is(h2, h3)",
+            "rules": {
+                "required-attr": {
+                    "severity": "error",
+                    "value": "ERROR:_h2_and_h3_must_be_wrapped_inside_a_section_tag",
+                    "message": "h2 and h3 must be wrapped inside a <section> tag."
+                }
+            }
+        },
+        {
+            "selector": "section :is(h2, h3)",
+            "rules": {
+                "required-attr": false
+            }
+        },
+        {
+            "selector": "section h1",
+            "rules": {
+                "permitted-contents": {
+                    "severity": "error",
+                    "message": "h1 must not be inside a <section> tag."
+                },
+                "required-attr": {
+                    "severity": "error",
+                    "value": "ERROR:_h1_must_not_be_inside_section",
+                    "message": "h1 must not be inside a <section> tag."
+                }
+            }
+        }
+    ]
+}

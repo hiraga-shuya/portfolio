@@ -1,0 +1,94 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "variables" as v;
+@use "sass:math";
+@use "sass:map";
+
+// BREAKPOINT
+$breakpoints: (
+    'smartphone': 'screen and (max-width: #{v.$bp_smartphone_max})',
+    'tablet': 'screen and (min-width: #{v.$bp_tablet_min}) and (max-width: #{v.$bp_tablet_max})',
+    'pc_x_tablet': 'screen and (min-width: #{v.$bp_tablet_min})',
+    'sp_x_tablet': 'screen and (max-width: #{v.$bp_tablet_max})',
+    'pc_content_size': 'screen and (min-width: #{v.$bp_pc_min}) and (max-width: #{v.$base_content_width})',
+    'pc': 'screen and (min-width: #{v.$bp_pc_min})'
+) !default;
+
+/**
+ * メディアクエリを呼び出すmixin
+ * @param {String} $breakpoint - $breakpointsマップのキー
+ */
+@mixin media_queries($breakpoint: smartphone) {
+    @media #{map.get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+/**
+ * transitionプロパティのmixin
+ * @param {String} $val... - transitionの値。引数がなければデフォルト値が入る
+ */
+@mixin transition($val...) {
+    @if(length($val) == 0) {
+        $val: 0.3s ease-out;
+    }
+    transition: $val;
+}
+
+/**
+ * アスペクト比を保持するmixin（旧ブラウザ対応が必要な場合のみ使用）
+ *
+ * 通常はCSSの`aspect-ratio`プロパティを直接使用してください。
+ * このmixinは、iOS 14やIEなど、`aspect-ratio`未対応ブラウザのサポートが
+ * 必須のプロジェクトでのみ使用します
+ *
+ * @param {Number} $width - 横幅の比率
+ * @param {Number} $height - 高さの比率
+ */
+@mixin aspect-ratio-ios14($width, $height) {
+    aspect-ratio: #{$width} / #{$height};
+
+    @supports not (aspect-ratio: #{$width} / #{$height}) {
+        position: relative;
+        height: 0;
+        padding-top: percentage(math.div($height, $width));
+
+        > :first-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+/**
+ * remとpxのフォールバック付きでフォントサイズを指定するmixin
+ * Note: html { font-size: 62.5%; } の設定が前提 (1rem = 10px)
+ * @param {Number} $size - px単位のフォントサイズ
+ */
+@mixin fontsize($size: 14) {
+    font-size: $size * 1px;
+    font-size: math.div($size, 10) * 1rem;
+}
+
+/**
+ * 2色のグラデーションを生成するmixin
+ * @param {Color} $start-color - 開始色
+ * @param {Color} $end-color - 終了色
+ * @param {String} $orientation - vertical | horizontal | radial
+ */
+@mixin gradientType2color($start-color, $end-color, $orientation) {
+    background: $start-color;
+
+    @if $orientation == vertical {
+        background: linear-gradient(to bottom, $start-color, $end-color);
+    } @else if $orientation == horizontal {
+        background: linear-gradient(to right, $start-color, $end-color);
+    } @else {
+        background: radial-gradient(ellipse at center, $start-color, $end-color);
+    }
+}

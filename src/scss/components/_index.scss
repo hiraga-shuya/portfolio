@@ -1,0 +1,16 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+/* components ディレクトリ
+ * 
+ * このディレクトリは、再利用可能なUIコンポーネントのスタイルを格納します。
+ * ページ固有ではない、複数の場所で使用される要素のスタイルを定義します。
+ */
+@forward "breadcrumbs";
+@forward "button";
+@forward "common";
+@forward "heading";
+@forward "table";
+@forward "text";
+@forward "list";
+@forward "section";

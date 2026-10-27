@@ -1,0 +1,28 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* テキスト
+========================================================*/
+#{g.$prefix_mod}{
+    &Text{
+        @include g.media_queries(pc){
+            @include g.fontsize(16);
+            margin: 0 0 20px;
+        }
+        @include g.media_queries{
+            @include g.fontsize(14);
+            margin: 0 0 10px;
+        }
+        &Bold{
+            font-weight: 700;
+        }
+        &Center{
+            text-align: center;
+        }
+    }
+    &ReadText {
+        
+    }
+}

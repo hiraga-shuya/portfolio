@@ -1,0 +1,51 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* テーブル
+========================================================*/
+#{g.$prefix_mod}{
+    &Table{
+        width: 100%;
+        margin: 0 0 40px;
+        @include g.media_queries{
+            margin: 60px 0 0;
+        }
+        thead, tbody{
+            tr{
+                border-top: 1px solid var(--gray);
+                position: relative;
+                th,td{
+                    padding: 32px 0px;
+                    @include g.fontsize(14);
+                    text-align: center;
+                    &:not(:last-child){
+                        border-right: 1px solid var(--gray);
+                    }
+                }
+                th{
+                    font-weight: 700;
+                    vertical-align: center;
+                    @include g.media_queries{
+                        padding: 30px 20px 30px 0;
+                    }
+                }
+            }
+        }
+        thead{
+            tr{
+                th{
+                    background: var(--lightblue);
+                }
+            }
+        }
+        tbody{
+            tr{
+                th{
+                    background: var(--lightgray);
+                }
+            }
+        }
+    }
+}

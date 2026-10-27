@@ -1,0 +1,16 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* テキスト
+========================================================*/
+#{g.$prefix_mod}{
+    &List{
+        padding: 0px 20px;
+        list-style: disc;
+        &__item {
+
+        }
+    }
+}

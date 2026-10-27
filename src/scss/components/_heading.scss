@@ -1,0 +1,55 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+/* タイトル
+========================================================*/
+#{g.$prefix_mod}{
+    &Head{
+        &Lv02{
+            position: sticky;
+            top: 150px;
+            left: 0px;
+            line-height: 1;
+            white-space: nowrap;
+            @include g.media_queries(pc){
+                margin: 0 0 30px;
+                padding: 0 0 0 20px;
+                @include g.fontsize(40);
+            }
+            @include g.media_queries{
+                margin: 0 0 20px;
+                padding: 0 0 0 10px;
+                @include g.fontsize(30);
+            }
+        }
+        &Lv03{
+            font-weight: 700;
+            background: #414141;
+            padding: 12px 24px;
+            width: 50%;
+            @include g.media_queries(pc){
+                margin: 0 0 20px;
+                @include g.fontsize(24);
+            }
+            @include g.media_queries{
+                margin: 0 0 20px;
+                @include g.fontsize(20);
+            }
+        }
+        &Lv04{
+            @include g.media_queries(pc){
+                margin: 0 0 10px;
+                @include g.fontsize(22);
+            }
+            @include g.media_queries{
+                margin: 0 0 10px;
+                @include g.fontsize(18);
+            }
+        }
+        &Box {
+            
+        }
+    }
+}

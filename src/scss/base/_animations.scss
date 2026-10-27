@@ -1,0 +1,30 @@
+//文字コードはutf-8
+@charset "UTF-8";
+
+@use "../abstracts" as g;
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes textShow {
+    0% {
+        filter: blur(8px);
+        opacity: 0;
+    }
+
+    50% {
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    100% {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
