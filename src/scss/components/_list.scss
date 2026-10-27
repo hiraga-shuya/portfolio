@@ -9,8 +9,27 @@
     &List{
         padding: 0px 20px;
         list-style: disc;
+        @include g.media_queries {
+            padding: 0 0 0 20px;
+        }
         &__item {
+            @include g.media_queries {
+                margin: 0 0 8px;
+            }
+        }
+    }
+}
 
+// リスト項目のホバーで少しだけ前に出る動き（PCのみ）
+#{g.$prefix_mod}{
+    &List{
+        &__item {
+            transition: transform .3s ease;
+            @include g.media_queries(pc){
+                &:hover{
+                    transform: translateX(6px);
+                }
+            }
         }
     }
 }

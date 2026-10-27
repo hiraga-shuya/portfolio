@@ -5,7 +5,7 @@
 import { MEDIA_QUERIES } from '../utils/breakpoints.js';
 
 export function initHamburgerMenu() {
-    const menu = document.querySelectorAll('.header__nav__inner');
+    const menu = document.querySelectorAll('.header__list');
     const openBtn = document.querySelectorAll('.openbtn');
     const mq = window.matchMedia(MEDIA_QUERIES.smartphone);
 

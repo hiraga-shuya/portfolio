@@ -13,15 +13,29 @@
             background: rgb(102 102 102 / 30%);
             display: flex;
             margin:60px 0;
+            // タブレット以下は見出しと本文を縦積みにし、本文の横幅を確保する
+            @include g.media_queries(sp_x_tablet) {
+                flex-direction: column;
+                // 上部は固定ヘッダーと見出しが重ならないよう余白を確保
+                padding: 96px 16px 60px;
+                margin: 40px 0;
+            }
             >*:last-child {
                 margin-bottom: 0;
             }
             &__head {
                 width: 25%;
+                @include g.media_queries(sp_x_tablet) {
+                    width: 100%;
+                }
             }
             &__content {
                 width: 75%;
                 margin: 60px 0 0;
+                @include g.media_queries(sp_x_tablet) {
+                    width: 100%;
+                    margin: 24px 0 0;
+                }
             }
             &.is-hidden {
                 opacity: 0;
@@ -37,16 +51,65 @@
         }
         &Lv03{
             margin: 0 0 80px;
+            @include g.media_queries {
+                margin: 0 0 48px;
+            }
             >*:last-child {
                 margin-bottom: 0;
             }
         }
         &Lv04{
             margin: 0 0 60px;
+            @include g.media_queries {
+                margin: 0 0 40px;
+            }
             >*:last-child {
                 margin-bottom: 0;
             }
         }
 
+    }
+}
+
+// セクション表示時の段階的な出現（is-visible付与に連動）
+// ※is-hiddenを持たないページ（game等）では初期非表示にしない
+.modSectionLv02 {
+    transition: opacity .6s ease, transform .6s ease;
+    &.is-hidden {
+        .modSectionLv03,
+        .modSectionLv04 {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+    }
+    &.is-visible {
+        .modSectionLv03,
+        .modSectionLv04 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .modSectionLv02__content > .modSectionLv03:nth-child(2) {
+            transition-delay: .15s;
+        }
+        .modSectionLv02__content > .modSectionLv03:nth-child(3) {
+            transition-delay: .3s;
+        }
+        .modSectionLv02__content > .modSectionLv03:nth-child(4) {
+            transition-delay: .45s;
+        }
+    }
+}
+
+// 動きを抑える設定の利用者にはアニメーションを無効化
+@media (prefers-reduced-motion: reduce) {
+    .modSectionLv02,
+    .modSectionLv02 .modSectionLv03,
+    .modSectionLv02 .modSectionLv04 {
+        transition: none;
+        transform: none;
+    }
+    .top .kv::before {
+        animation: none;
     }
 }
