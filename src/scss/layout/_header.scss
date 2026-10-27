@@ -30,12 +30,17 @@
             gap: 0 20px;
         }
         @include g.media_queries{
+            // 初期状態は閉じておき、ハンバーガーボタンで開閉する
+            display: none;
             text-align: center;
             margin: 30px 0 0;
             border-top: 1px solid var(--white);
         }
     }
     &__item{
+        @include g.media_queries{
+            margin: 16px 0 0;
+        }
         > a{
             font-family: g.$fontface_en;
             color: var(--white);
@@ -50,8 +55,9 @@
                 background: var(--white);
                 color: var(--black);
                 border: 2px solid var(--white);
+                padding: 6px 20px;
+                display: inline-block;
                 @include g.media_queries(pc){
-                    padding: 6px 20px;
                     &:hover{
                         color: var(--red);
                         border: 2px solid var(--red);
@@ -81,11 +87,9 @@
         width: 48px;
         height: 48px;
         display: none;
-        @media screen and (min-width:0px) and (max-width:980px){
-            display: unset;
-        }
-        @include g.media_queries(pc){
-            display: none;
+        // 表示範囲はメニューのレイアウト・JSの判定（スマホ幅）と揃える
+        @include g.media_queries{
+            display: block;
         }
         span{
             display: inline-block;
@@ -94,7 +98,7 @@
             left: 14px;
             height: 3px;
             border-radius: 2px;
-            background-color: var(--black);
+            background-color: var(--white);
             width: 20px;
             &:nth-of-type(1){
                 top: 15px;
@@ -122,6 +126,33 @@
                     left: 14px;
                     transform: translateY(-6px) rotate(45deg);
                     width: 20px;
+                }
+            }
+        }
+    }
+}
+
+// ナビリンクのホバーで下線が伸びる演出（contactボタンは除く）
+.header{
+    &__item{
+        > a:not(.contact){
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 100%;
+                height: 2px;
+                background: var(--red);
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform .35s ease;
+            }
+            @include g.media_queries(pc){
+                &:hover::after{
+                    transform: scaleX(1);
+                    transform-origin: left;
                 }
             }
         }

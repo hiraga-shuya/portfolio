@@ -4,7 +4,7 @@
 export const BREAKPOINTS = {
     pc_min: 769,
     tablet_max: 1000,
-    tablet_min: 1001,
+    tablet_min: 769,
     smartphone_max: 768,
     base_content_width: 960
 };
