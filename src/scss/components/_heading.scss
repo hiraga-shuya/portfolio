@@ -13,6 +13,12 @@
             left: 0px;
             line-height: 1;
             white-space: nowrap;
+            // 縦積みレイアウトでは固定せず、長い見出しも折り返す
+            @include g.media_queries(sp_x_tablet) {
+                position: static;
+                white-space: normal;
+                line-height: 1.4;
+            }
             @include g.media_queries(pc){
                 margin: 0 0 30px;
                 padding: 0 0 0 20px;
@@ -29,6 +35,10 @@
             background: #414141;
             padding: 12px 24px;
             width: 50%;
+            @include g.media_queries {
+                width: 100%;
+                padding: 12px 16px;
+            }
             @include g.media_queries(pc){
                 margin: 0 0 20px;
                 @include g.fontsize(24);
@@ -51,5 +61,36 @@
         &Box {
             
         }
+    }
+}
+
+// セクション見出しのアクセントバー（表示時にグラデーションが伸びる）
+.modHeadLv02 {
+    &::after {
+        content: "";
+        display: block;
+        width: 72px;
+        height: 3px;
+        margin-top: 16px;
+        background: linear-gradient(90deg, var(--orange), var(--blue), var(--orange));
+        background-size: 200% 100%;
+        animation: gradientFlow 4s ease infinite;
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: transform .8s cubic-bezier(0.77, 0, 0.175, 1) .2s;
+    }
+}
+// JSで表示制御するセクション（is-hidden付き）だけ、表示時にバーを伸ばす
+.modSectionLv02.is-hidden .modHeadLv02::after {
+    transform: scaleX(0);
+}
+.modSectionLv02.is-hidden.is-visible .modHeadLv02::after {
+    transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+    .modHeadLv02::after {
+        animation: none;
+        transition: none;
+        transform: scaleX(1);
     }
 }

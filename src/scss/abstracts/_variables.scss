@@ -8,9 +8,10 @@
 $dir_img: "/wp-content/themes/portfolio/assets/img/";
 
 // ブレークポイント
+// タブレットはスマホ上限(768px)の翌日からコンテンツ幅上限(1000px)まで
 $bp_pc_min: 769px;
 $bp_tablet_max: 1000px;
-$bp_tablet_min: 1001px;
+$bp_tablet_min: 769px;
 $bp_smartphone_max: 768px;
 
 // font

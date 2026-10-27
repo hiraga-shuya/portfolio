@@ -28,3 +28,35 @@
         opacity: 1;
     }
 }
+// KVのスクロールヒント用：線が伸びて消える
+@keyframes scrollLine {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    45% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+    55% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+// 見出しのアクセントバーなど、グラデーションの流れ用
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
